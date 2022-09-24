@@ -1,0 +1,75 @@
+--- pacman-6.0.1/etc/pacman.conf.in.org	2022-09-17 11:20:40.037339337 +0300
++++ pacman-6.0.1/etc/pacman.conf.in	2022-09-17 11:21:58.557339307 +0300
+@@ -9,15 +9,15 @@
+ [options]
+ # The following paths are commented out with their default values listed.
+ # If you wish to use different paths, uncomment and update the paths.
+-#RootDir     = @ROOTDIR@
++#RootDir     = /
+ #DBPath      = @localstatedir@/lib/pacman/
+ #CacheDir    = @localstatedir@/cache/pacman/pkg/
+ #LogFile     = @localstatedir@/log/pacman.log
+ #GPGDir      = @sysconfdir@/pacman.d/gnupg/
+ #HookDir     = @sysconfdir@/pacman.d/hooks/
+-HoldPkg     = pacman glibc
+-#XferCommand = /usr/bin/curl -L -C - -f -o %o %u
+-#XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
++#XferCommand = @TERMUX_PREFIX@/bin/curl -L -C - -f -o %o %u
++#XferCommand = @TERMUX_PREFIX@/bin/wget --passive-ftp -c -O %o %u
++HoldPkg      = pacman
+ #CleanMethod = KeepInstalled
+ Architecture = auto
+ 
+@@ -30,16 +30,17 @@
+ 
+ # Misc options
+ #UseSyslog
+-#Color
++Color
+ #NoProgressBar
+ CheckSpace
+ #VerbosePkgLists
+ ParallelDownloads = 5
+ 
+-# PGP signature checking
+-#SigLevel = Optional
+-#LocalFileSigLevel = Optional
+-#RemoteFileSigLevel = Optional
++# By default, pacman accepts packages signed by keys that its local keyring
++# trusts (see pacman-key and its man page), as well as unsigned packages.
++SigLevel    = Never
++LocalFileSigLevel = Optional
++#RemoteFileSigLevel = Required
+ 
+ #
+ # REPOSITORIES
+@@ -60,18 +61,14 @@
+ # uncommented to enable the repo.
+ #
+ 
+-# An example of a disabled remote package repository with multiple servers
+-# available. To enable, uncomment the following lines. You can add preferred
+-# servers immediately after the header and they will be used before the
+-# default mirrors.
+-#[core]
+-#SigLevel = Required
+-#Server = ftp://ftp.example.com/foobar/$repo/os/$arch/
+-# The file referenced here should contain a list of 'Server = ' lines.
+-#Include = @sysconfdir@/pacman.d/mirrorlist
+-
+-# An example of a custom package repository.  See the pacman manpage for
+-# tips on creating your own repositories.
+-#[custom]
+-#SigLevel = Optional TrustAll
+-#Server = file:///home/custompkgs
++[main]
++Server = https://s3.amazonaws.com/termux-pacman.us/main/$arch
++
++[x11]
++Server = https://s3.amazonaws.com/termux-pacman.us/x11/$arch
++
++[root]
++Server = https://s3.amazonaws.com/termux-pacman.us/root/$arch
++
++[tur]
++Server = https://s3.amazonaws.com/termux-pacman.us/tur/$arch

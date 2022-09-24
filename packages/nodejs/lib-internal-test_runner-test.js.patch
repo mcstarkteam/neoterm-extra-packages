@@ -1,0 +1,31 @@
+diff --git a/lib/internal/test_runner/test.js b/lib/internal/test_runner/test.js
+index 1663958f..8813f52b 100644
+--- a/lib/internal/test_runner/test.js
++++ b/lib/internal/test_runner/test.js
+@@ -39,7 +39,7 @@ const {
+ } = require('internal/validators');
+ const { setTimeout } = require('timers/promises');
+ const { TIMEOUT_MAX } = require('internal/timers');
+-const { cpus } = require('os');
++const { numcpus } = require('os');
+ const { bigint: hrtime } = process.hrtime;
+ const kCallbackAndPromisePresent = 'callbackAndPromisePresent';
+ const kCancelledByParent = 'cancelledByParent';
+@@ -53,7 +53,7 @@ const noop = FunctionPrototype;
+ const isTestRunner = getOptionValue('--test');
+ const testOnlyFlag = !isTestRunner && getOptionValue('--test-only');
+ // TODO(cjihrig): Use uv_available_parallelism() once it lands.
+-const rootConcurrency = isTestRunner ? MathMax(cpus().length - 1, 1) : 1;
++const rootConcurrency = isTestRunner ? MathMax(numcpus() - 1, 1) : 1;
+ const kShouldAbort = Symbol('kShouldAbort');
+ 
+ 
+@@ -153,7 +153,7 @@ class Test extends AsyncResource {
+       this.concurrency = concurrency;
+     } else if (typeof concurrency === 'boolean') {
+       if (concurrency) {
+-        this.concurrency = isTestRunner ? MathMax(cpus().length - 1, 1) : Infinity;
++        this.concurrency = isTestRunner ? MathMax(numcpus() - 1, 1) : Infinity;
+       } else {
+         this.concurrency = 1;
+       }
