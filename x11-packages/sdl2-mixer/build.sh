@@ -1,0 +1,9 @@
+TERMUX_PKG_HOMEPAGE=https://github.com/libsdl-org/SDL_mixer
+TERMUX_PKG_DESCRIPTION="A simple multi-channel audio mixer"
+TERMUX_PKG_LICENSE="ZLIB"
+TERMUX_PKG_LICENSE_FILE="LICENSE.txt"
+TERMUX_PKG_MAINTAINER="@termux"
+TERMUX_PKG_VERSION=2.6.1
+TERMUX_PKG_SRCURL=https://github.com/libsdl-org/SDL_mixer/releases/download/release-${TERMUX_PKG_VERSION}/SDL2_mixer-${TERMUX_PKG_VERSION}.tar.gz 
+TERMUX_PKG_SHA256=bc5c7b85f297e5f3cb34c99c366a4746922fc41365b15fd78a164dda71a861a3
+TERMUX_PKG_DEPENDS="libflac, libmodplug, libvorbis, mpg123, opusfile, sdl2"
