@@ -2,26 +2,9 @@
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/neoterm-extra/neoterm-extra-packages)
 
-<img src=".github/static/powered-by-fosshost.png" alt="Powered by FossHost" width="128px"></img>
+该项目包含为 [Neoterm](https://github.com/neoterm-extra/neoterm-extra-app) 构建包的脚本和补丁
+安卓应用。
 
-This project contains scripts and patches to build packages for the [Termux](https://github.com/termux/termux-app)
-Android application.
+[包管理](https://github.com/neoterm-extra/neoterm-extra-packages/wiki/Package-Management) 提供了有关 Termux 包管理的快速方法。 它还包含有关如何在运行 `apt` 或 `pkg` 命令时修复 **`repository is under maintenance 或 down`** 错误的信息。
 
-Quick how-to about Termux package management is available at [Package Management](https://github.com/termux/termux-packages/wiki/Package-Management). It also has info on how to fix **`repository is under maintenance or down`** errors when running `apt` or `pkg` commands.
-
-## Contributing
-
-**@termux is looking for help with fixing issues, adding new packages and maintaining
-existing ones. It would be very helpful if you submit a pull request with bug fixes.**
-
-Read [CONTRIBUTING.md](/CONTRIBUTING.md) and [Developer's Wiki](https://github.com/termux/termux-packages/wiki) for more details.
-
-## Contacts
-
-General mailing list: https://groups.io/g/termux
-
-Developer mailing list: https://groups.io/g/termux-dev
-
-General chat: https://gitter.im/termux/termux or #termux on IRC/libera.chat.
-
-Developer chat: https://gitter.im/termux/dev.
+## 感谢来自 termux-packages的代码
